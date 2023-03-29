@@ -1,20 +1,9 @@
-import { Container } from "@mui/material";
-
-interface Props {
-  src: string;
-  title: string;
-  description: string;
-}
-
-export function Comic({ src, title, description }: Props) {
+export function ComicModal() {
   return (
-    <Container>
-        <Image src={src} alt={title} />
-        <body>
-          <title>{title}</title>
-          <span>{description}</span>
-          <p>More info</p>
-        </body>
-    </Container>
+    <div className="w-screen h-screen flex justify-center items-center">
+      <div className="w-full max-w-5xl px-6 flex flex-col gap-16">
+        ComicModal
+      </div>
+    </div>
   );
 }
