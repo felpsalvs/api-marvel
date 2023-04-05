@@ -26,7 +26,7 @@ const App = () => {
           "http://gateway.marvel.com/v1/public/comics",
           {
             params: {
-              apikey: "676a34a3184dfbcef1093ea17f4113dc",
+              apikey: "API_KEY",
               orderBy: "title",
               limit: 20,
             },
