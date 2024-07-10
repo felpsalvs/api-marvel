@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import ComicList from "./components/ComicList";
 import { CircularProgress } from "@mui/material";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import ComicList from "./components/ComicList";
 
 interface Comic {
   id: number;
