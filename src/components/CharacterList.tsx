@@ -1,4 +1,4 @@
-import useCharacters from './hooks/useCharacters';
+import useCharacters from '../hooks/useCharacters';
 
 const CharacterList = () => {
   const { data: characters } = useCharacters();

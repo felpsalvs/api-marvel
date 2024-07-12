@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { useQuery } from 'react-query';
-import { Character } from './store/useCharactersStore';
+import { Character } from '../store/useCharactersStore';
 
 const useCharacters = () => {
   return useQuery<Character[], AxiosError>({
