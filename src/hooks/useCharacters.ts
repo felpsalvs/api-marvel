@@ -2,6 +2,8 @@ import axios, { AxiosError } from 'axios';
 import { useQuery } from 'react-query';
 import { Character } from '../store/useCharactersStore';
 
+const MARVEL_API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
+
 const useCharacters = () => {
   return useQuery<Character[], AxiosError>({
     queryKey: 'characters',
@@ -16,7 +18,7 @@ const useCharacters = () => {
 const fetchCharacters = async () => {
   try {
     const { data } = await axios.get(
-      'https://gateway.marvel.com:443/v1/public/characters?apikey=676a34a3184dfbcef1093ea17f4113dc'
+      `https://gateway.marvel.com:443/v1/public/characters?apikey=${MARVEL_API_KEY}`
     );
     const characters = data.data.results.map((character: Character) => ({
       id: character.id,
