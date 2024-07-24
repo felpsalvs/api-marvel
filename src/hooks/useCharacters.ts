@@ -5,13 +5,13 @@ import { Character } from '../store/useCharactersStore';
 const MARVEL_API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 
 const useCharacters = () => {
-  return useQuery<Character[], AxiosError>({
+  return useQuery<Character[] | undefined, AxiosError>({
     queryKey: 'characters',
     queryFn: fetchCharacters,
     onError: error => {
       console.log('Failed to fetch characters:', error.message);
     },
-    staleTime: 7 * 24 * 60 * 60 * 1000,
+   staleTime: 12 * 60 * 60 * 1000, // It is unlikely that the information will change in less than 12 hours.
   });
 };
 
