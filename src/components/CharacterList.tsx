@@ -1,8 +1,8 @@
-import useCharacters from '../hooks/useCharacters';
-import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 import Masonry from '@mui/lab/Masonry';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import useCharacters from '../hooks/useCharacters';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#FFF',
@@ -12,13 +12,17 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const CharacterList = () => {
-  const { data: characters } = useCharacters();
+interface Props {
+  offset: number;
+}
 
-  return characters ? (
+const CharacterList: React.FC<Props> = ({ offset }) => {
+  const { data: characterData } = useCharacters(offset);
+
+  return characterData ? (
     <Box sx={{ width: '100%', minHeight: 253 }}>
       <Masonry columns={{ xs: 3, sm: 4 }} spacing={2}>
-        {characters?.map((character, index) => (
+        {characterData?.map((character, index) => (
           <Item key={index}>
             <img
               src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
