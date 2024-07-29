@@ -3,6 +3,7 @@ import Masonry from '@mui/lab/Masonry';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import useCharacters from '../hooks/useCharacters';
+import { usePaginationStore } from '../store/usePaginationStore';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#FFF',
@@ -12,11 +13,12 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-interface Props {
-  offset: number;
+const CharacterList = () => {
+  const { offset } = usePaginationStore(state => ({
+    offset: state.offset,
+  }));
 }
 
-const CharacterList: React.FC<Props> = ({ offset }) => {
   const { data: characterData } = useCharacters(offset);
 
   return characterData ? (
