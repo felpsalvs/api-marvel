@@ -1,19 +1,13 @@
 import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import UsePagination from './hooks/usePagination';
+import './App.css';
+import logo from './assets/marvel-logo.svg';
 import CharacterPagination from './components/CharactersPagination';
 import CharacterList from './components/CharacterList';
-import logo from './assets/marvel-logo.svg';
-import './App.css';
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
-  const { offset, setOffset } = usePagination();
-
-  const handlePageChange = (event, value) => {
-    setOffset(value);
-  };
 
   return (
     <>
@@ -25,9 +19,9 @@ const App = () => {
         />
       </div>
       <QueryClientProvider client={queryClient}>
-        <CharacterList offset={offset} />
+        <CharacterList />
         <div>
-          <CharactersPagination onPageChange={handlePageChange} />
+          <CharacterPagination />
         </div>
         <ReactQueryDevtools />
       </QueryClientProvider>
